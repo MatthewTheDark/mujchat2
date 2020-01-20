@@ -19,11 +19,10 @@ exports.apiSvatky = function (req, res) {
     res.writeHead(200, {
         "Content-type": "application/json",
     });
-    let q = url.parse(req.url, true);
     let obj = {};
-    if (q.query["m"] && q.query["d"] ) {
-        let d = q.query["d"];
-        let m = q.query["m"];
+    if (req.parameters.m && req.parameters.d ) {
+        let d = req.parameters.d;
+        let m = req.parameters.m;
         obj.datum = d+"."+m+".";
         obj.svatek = SVATKY[m][d];
     } else {

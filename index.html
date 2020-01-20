@@ -6,17 +6,7 @@
     <script>
         const HOST = window.location.protocol + "//" + window.location.hostname + ((window.location.port) ? ":" + window.location.port : "");
         //const HOST = "http://localhost:8080";
-        function nactiSvatky() {
-            //dnesni a zitrejsi svatek
-            fetch(HOST+"/svatky").then(function(response) {
-                response.text().then(function(text) {
-                    let obj = JSON.parse(text);
-                    document.getElementById("datum").innerHTML = obj.datum;
-                    document.getElementById("svatek").innerHTML = obj.svatek;
-                    document.getElementById("svatek2").innerHTML = obj.svatekZitra;
-                });
-            });
-        }
+
         function posliZpravu() {
             let chatmsg = document.getElementById("chatmsg").value;
             let body = {};
@@ -98,21 +88,20 @@
             document.getElementById("div_chat").style.display = "block";
         }
         function poNacteni() {
-            nactiSvatky();
             ukazDivPrihl();
         }
     </script>
 </head>
 <body onload="poNacteni()">
 
-<h1>appka</h1>
+<h1>Homepage</h1>
 
 Dnes je <span id="datum">...</span> a svátek má <span id="svatek">...</span>, zítra <span id="svatek2">...</span>.
 <br><br>
 
-<h1>chat</h1>
+<h1>eXtreme chat</h1>
 
-<div id="div_prihl" style="background-color: aquamarine">
+<div id="div_prihl" style="background-color: mediumvioletred">
     <h3>Přihlášení</h3>
     Přihlašovací jméno: <input type="text" id="login"><br>
     Heslo: <input type="password" id="password"><br>
@@ -120,7 +109,7 @@ Dnes je <span id="datum">...</span> a svátek má <span id="svatek">...</span>, 
     <input type="button" value="Registrovat..." onclick="ukazDivReg()">
 </div>
 
-<div id="div_reg" style="background-color: coral">
+<div id="div_reg" style="background-color: blueviolet">
     <h3>Registrace</h3>
     Jméno nebo přezdívka: <input type="text" id="reg-name"><br>
     Přihlašovací jméno: <input type="text" id="reg-login"><br>
@@ -131,7 +120,7 @@ Dnes je <span id="datum">...</span> a svátek má <span id="svatek">...</span>, 
     <input type="button" value="Storno" onclick="ukazDivPrihl()">
 </div>
 
-<div id="div_chat" style="background-color: greenyellow">
+<div id="div_chat" style="background-color: crimson">
 <div id="chatmsgs"></div>
 <b id="myname">...</b>:<input type="text" id="chatmsg"><input type="button" value="Odešli" onclick="posliZpravu()">
 </div>
